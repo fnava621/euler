@@ -1,0 +1,37 @@
+#!/usr/bin/perl
+
+use 5.010;
+use autodie;
+use strict;
+use utf8;
+
+
+=begin comment
+
+If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+
+Find the sum of all the multiples of 3 or 5 below 1000.
+
+=cut 
+
+sub sum { 
+    my $result = 0;
+    foreach (@_){
+        $result += $_;
+    }
+    return $result;
+}
+
+sub mul_of_3_and_5 {
+    my @answer;
+    
+    foreach (1..999){
+        if ($_ % 3 == 0 or $_ % 5 == 0){
+            push(@answer, $_);
+        }
+    }
+    
+    return sum(@answer);
+}
+
+say &mul_of_3_and_5;

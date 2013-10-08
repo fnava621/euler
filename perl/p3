@@ -1,0 +1,37 @@
+#!/usr/bin/perl
+
+use 5.010;
+use autodie;
+use strict;
+use utf8;
+
+
+=begin comment
+
+A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+
+Find the largest palindrome made from the product of two 3-digit numbers.
+
+=cut 
+
+
+sub largest_palindrome {
+    my $largest = 0;
+    foreach my $x (100..999){
+        foreach my $y (100..999){
+            if ($y >= $x){
+                my $prod = $x*$y;
+                my $pal = join('', reverse(split(//, $prod)));
+                if (($pal == $prod) and ($prod > $largest)){
+                    $largest = $prod;
+                }
+            }
+        }
+    }
+    return $largest;
+}
+
+say largest_palindrome();
+
+                    
+        
